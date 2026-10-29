@@ -1,0 +1,3 @@
+export default { content: ['./index.html','./src/**/*.{ts,tsx}'],
+ theme:{extend:{colors:{background:'hsl(var(--background))',foreground:'hsl(var(--foreground))',primary:{DEFAULT:'hsl(var(--primary))',foreground:'hsl(var(--primary-foreground))'},accent:{DEFAULT:'hsl(var(--accent))',foreground:'hsl(var(--accent-foreground))'},muted:{DEFAULT:'hsl(var(--muted))',foreground:'hsl(var(--muted-foreground))'},card:{DEFAULT:'hsl(var(--card))',foreground:'hsl(var(--card-foreground))'},border:'hsl(var(--border))',ring:'hsl(var(--ring))',creme:'#FCF7EA',navy:'#1B1F4A',salmao:'#F4A3A8',rosa:'#E8737F',ardosia:'#5A5C80',borda:'#E9E1CC'},
+ borderRadius:{lg:'var(--radius)'},fontFamily:{mono:['"Space Mono"','monospace'],sans:['"DM Sans"','sans-serif']}}}}

@@ -1,0 +1,11 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{--background:43 75% 95%;--foreground:235 47% 20%;--primary:235 47% 20%;--primary-foreground:43 75% 95%;--accent:356 79% 80%;--accent-foreground:235 47% 20%;--muted:237 17% 43%;--muted-foreground:237 17% 43%;--card:0 0% 100%;--card-foreground:235 47% 20%;--border:43 40% 86%;--ring:354 72% 68%;--radius:1rem}
+body{@apply bg-creme text-navy font-sans}
+*:focus-visible{outline:2px solid #E8737F;outline-offset:2px}
+.card{@apply bg-white border border-borda rounded-2xl shadow-sm}
+.btn{@apply rounded-xl min-h-[44px] px-4 font-medium bg-navy text-creme disabled:opacity-40}
+.btn-cta{@apply rounded-xl min-h-[44px] px-4 font-mono font-bold bg-salmao text-navy disabled:opacity-40}
+.btn-out{@apply rounded-xl min-h-[44px] px-4 font-medium border border-navy text-navy}
+.inp{@apply rounded-xl border border-borda bg-white px-3 min-h-[44px] w-full}
+.hl{@apply bg-salmao px-1.5 rounded}
+.selo{background:radial-gradient(circle at 0 50%,#FCF7EA 8px,transparent 9px) left/20px 28px repeat-y,radial-gradient(circle at 100% 50%,#FCF7EA 8px,transparent 9px) right/20px 28px repeat-y,#fff}
