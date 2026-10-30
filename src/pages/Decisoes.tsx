@@ -15,10 +15,10 @@ function Cartao({ e }: { e: Entrega }) {
   const confirmar = () => { if (!modo) return
     if (modo === 'reentrega' && !data) return toast.error('Informe a nova data')
     decidir(e.id, modo, data); toast.success(`${modo === 'reentrega' ? 'Reentrega agendada' : 'Devolução registrada'}. Parceira avisada`) }
-  return <section className="card p-4 border-rosa">
-    <div className="flex flex-wrap justify-between gap-2"><div><h2 className="font-mono font-bold">{e.id} · {e.destinatario.nome}</h2>
+  return <section className="card p-4 border-destructive/30">
+    <div className="flex flex-wrap justify-between gap-2"><div><h2 className="font-display font-semibold">{e.id} · {e.destinatario.nome}</h2>
       <p className="text-sm text-ardosia">{CLIENTES.find(c => c.id === e.clienteId)?.nome} · {e.endereco.bairro} · {parc ?? 'sem parceira'}</p></div><StatusBadge status={e.status}/></div>
-    <p className="mt-2 text-sm"><b className="text-rosa">{oc?.tipoOcorrencia?.replace(/_/g, ' ')}</b>{oc && ` · ${format(new Date(oc.ocorridoEm), 'dd/MM/yyyy HH:mm')}`}</p>
+    <p className="mt-2 text-sm"><b className="text-destructive">{oc?.tipoOcorrencia?.replace(/_/g, ' ')}</b>{oc && ` · ${format(new Date(oc.ocorridoEm), 'dd/MM/yyyy HH:mm')}`}</p>
     {oc?.observacao && <p className="text-sm italic">{oc.observacao}</p>}
     <div className="flex flex-wrap gap-2 mt-3">
       <button className={modo === 'reentrega' ? 'btn' : 'btn-out'} onClick={() => setModo('reentrega')}>Reentrega</button>
@@ -32,6 +32,6 @@ function Cartao({ e }: { e: Entrega }) {
 }
 export default function Decisoes() {
   const lista = useStore(s => s.entregas.filter(e => e.status === 'ocorrencia'))
-  return <><PageHeader>Entregas em <span className="hl text-navy">ocorrência</span></PageHeader>
+  return <><PageHeader description="Analise cada ocorrência e defina uma reentrega ou devolução.">Entregas em ocorrência</PageHeader>
     <div className="space-y-3">{lista.length === 0 ? <EmptyState text="Nenhuma ocorrência aguardando decisão."/> : lista.map(e => <Cartao key={e.id} e={e}/>)}</div></>
 }

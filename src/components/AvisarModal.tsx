@@ -15,7 +15,7 @@ export function AvisarModal({ afetadas, onClose }: { afetadas: Entrega[]; onClos
       {grupos.length === 0 && <p className="text-sm my-4">Nenhum cliente com entregas atrasadas no momento.</p>}
       <div className="space-y-3 mt-3">{grupos.map(({ c, l }) => { const k = `${c.id}:${hoje}`; const ok = avisados.includes(k)
         return <section key={c.id} className={`rounded-xl border p-3 ${ok ? 'border-green-300 bg-green-50' : 'border-borda'}`}>
-          <div className="flex justify-between items-center gap-2"><b>{c.nome}</b>{ok && <span className="rounded-full bg-green-100 text-green-900 text-xs font-bold px-2.5 py-0.5">Avisado</span>}</div>
+          <div className="flex justify-between items-center gap-2"><b>{c.nome}</b>{ok && <span className="rounded-full bg-green-100 text-green-900 text-xs font-semibold px-2.5 py-0.5">Avisado</span>}</div>
           <ul className="text-sm mt-2 space-y-1">{l.map(e => <li key={e.id} className="flex justify-between gap-2"><span>{e.id} · {e.destinatario.nome} · {motivo(e)}</span><StatusBadge status={e.status}/></li>)}</ul>
           <div className="flex flex-wrap gap-2 mt-3">
             <button className="btn-out" onClick={() => { void navigator.clipboard?.writeText(msg(c.nome, l)); toast.success('Mensagem copiada para o WhatsApp') }}>Copiar mensagem</button>

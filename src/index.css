@@ -1,11 +1,66 @@
-@tailwind base;@tailwind components;@tailwind utilities;
-:root{--background:43 75% 95%;--foreground:235 47% 20%;--primary:235 47% 20%;--primary-foreground:43 75% 95%;--accent:356 79% 80%;--accent-foreground:235 47% 20%;--muted:237 17% 43%;--muted-foreground:237 17% 43%;--card:0 0% 100%;--card-foreground:235 47% 20%;--border:43 40% 86%;--ring:354 72% 68%;--radius:1rem}
-body{@apply bg-creme text-navy font-sans}
-*:focus-visible{outline:2px solid #E8737F;outline-offset:2px}
-.card{@apply bg-white border border-borda rounded-2xl shadow-sm}
-.btn{@apply rounded-xl min-h-[44px] px-4 font-medium bg-navy text-creme disabled:opacity-40}
-.btn-cta{@apply rounded-xl min-h-[44px] px-4 font-mono font-bold bg-salmao text-navy disabled:opacity-40}
-.btn-out{@apply rounded-xl min-h-[44px] px-4 font-medium border border-navy text-navy}
-.inp{@apply rounded-xl border border-borda bg-white px-3 min-h-[44px] w-full}
-.hl{@apply bg-salmao px-1.5 rounded}
-.selo{background:radial-gradient(circle at 0 50%,#FCF7EA 8px,transparent 9px) left/20px 28px repeat-y,radial-gradient(circle at 100% 50%,#FCF7EA 8px,transparent 9px) right/20px 28px repeat-y,#fff}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.982 0.016 95;
+    --foreground: 0.22 0.13 266;
+    --primary: 0.22 0.13 266;
+    --primary-foreground: 0.982 0.016 95;
+    --card: 0.993 0.008 95;
+    --accent: 0.92 0.03 250;
+    --muted: 0.94 0.02 95;
+    --muted-foreground: 0.48 0.06 266;
+    --border: 0.89 0.025 95;
+    --success: 0.55 0.14 155;
+    --warning: 0.78 0.16 75;
+    --destructive: 0.55 0.21 27;
+    --info: 0.55 0.15 240;
+    --radius: 0.75rem;
+  }
+  * { @apply border-border; }
+  body { @apply m-0 bg-background text-foreground font-sans antialiased; }
+  h1, h2, h3 { @apply font-display; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button, a { @apply transition-colors; }
+  button:disabled { @apply cursor-not-allowed; }
+  :focus-visible { outline: 2px solid oklch(var(--primary) / 0.6); outline-offset: 3px; }
+  input[type='checkbox'] { accent-color: oklch(var(--primary)); }
+  input, select, textarea { min-width: 0; }
+  ::selection { background: oklch(var(--accent)); }
+}
+
+@layer components {
+  .card { @apply rounded-xl border border-border bg-card; }
+  .btn, .btn-cta {
+    @apply min-h-[44px] rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-40;
+  }
+  .btn-out {
+    @apply min-h-[44px] rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/40 hover:bg-muted disabled:opacity-40;
+  }
+  .inp {
+    @apply min-h-[44px] w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition-shadow placeholder:text-muted-foreground/75 focus:border-primary/50 focus:ring-2 focus:ring-primary/15;
+  }
+  label > .inp { @apply mt-1; }
+  textarea.inp { @apply min-h-24; }
+  .profile-card {
+    @apply flex items-center gap-4 rounded-xl border border-border bg-card p-5 text-left transition hover:-translate-y-0.5 hover:border-primary hover:shadow-md;
+  }
+  .profile-icon { @apply grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground; }
+  .page-header { @apply mb-6 flex flex-wrap items-end justify-between gap-4; }
+  .page-title { @apply font-display text-2xl font-semibold tracking-tight; }
+  .page-description { @apply mt-1 text-sm text-muted-foreground; }
+  .data-table { @apply w-full text-sm; }
+  .data-table thead { @apply bg-muted/70 text-left text-xs uppercase tracking-wide text-muted-foreground; }
+  .data-table th { @apply whitespace-nowrap px-4 py-3 font-semibold; }
+  .data-table td { @apply px-4 py-3; }
+  .data-table tbody tr { @apply border-t border-border; }
+  .data-table tbody tr:hover { @apply bg-muted/30; }
+  .data-table tfoot { @apply border-t border-border bg-muted/40; }
+  .delivery-row { @apply hover:border-primary/40 hover:bg-muted/30; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+}

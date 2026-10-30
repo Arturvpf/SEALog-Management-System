@@ -6,9 +6,10 @@ const F = ({ label, erro, children }: { label: string; erro?: string; children: 
   <label className="block text-sm">{label}{children}{erro && <span role="alert" className="block text-xs text-red-600 mt-0.5">{erro}</span>}</label>
 export function EntregaFields({ i, register, errors }: { i: number; register: UseFormRegister<PedidoForm>; errors: FieldErrors<PedidoForm> }) {
   const er = errors.entregas?.[i]; const m = (k: keyof EntregaForm) => er?.[k]?.message
+  const telefone = register(`entregas.${i}.telefone`)
   return <div className="grid md:grid-cols-2 gap-3">
     <F label="Nome do destinatário" erro={m('nome')}><input className="inp" {...register(`entregas.${i}.nome`)}/></F>
-    <F label="Telefone" erro={m('telefone')}><input className="inp" inputMode="tel" placeholder="(81) 99999-9999" {...register(`entregas.${i}.telefone`, { onChange: ev => { ev.target.value = maskTel(ev.target.value) } })}/></F>
+    <F label="Telefone" erro={m('telefone')}><input className="inp" inputMode="tel" placeholder="(81) 99999-9999" {...telefone} onChange={ev => { ev.target.value = maskTel(ev.target.value); void telefone.onChange(ev) }}/></F>
     <F label="Logradouro" erro={m('logradouro')}><input className="inp" {...register(`entregas.${i}.logradouro`)}/></F>
     <F label="Número" erro={m('numero')}><input className="inp" {...register(`entregas.${i}.numero`)}/></F>
     <F label="Complemento (opcional)"><input className="inp" {...register(`entregas.${i}.complemento`)}/></F>

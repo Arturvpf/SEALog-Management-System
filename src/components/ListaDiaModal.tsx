@@ -9,7 +9,7 @@ export function ListaDiaModal({ parceiraId, onClose }: { parceiraId: string; onC
   return <Dialog open onOpenChange={o => { if (!o) onClose() }}><DialogContent className="flex flex-col">
       <DialogTitle>Lista do dia — {p.nome}</DialogTitle>
       {l.length === 0 ? <p className="text-sm my-4">Nenhuma entrega ativa para hoje com esta parceira.</p> :
-        <textarea readOnly aria-label="Texto da lista" className="inp py-2 mt-3 flex-1 min-h-[260px] font-mono text-xs" value={texto}/>}
+        <textarea readOnly aria-label="Texto da lista" className="inp py-2 mt-3 flex-1 min-h-[260px] font-display text-xs" value={texto}/>}
       <div className="flex flex-wrap gap-2 mt-4">
         <button className="btn-cta" disabled={l.length === 0} onClick={() => { void navigator.clipboard?.writeText(texto); toast.success('Texto copiado. Cole no WhatsApp') }}>Copiar texto</button>
         <button className="btn-out" disabled={l.length === 0} onClick={() => { baixarCsv(p, l); toast.success('CSV baixado') }}>Baixar CSV</button>

@@ -43,7 +43,7 @@ function Conteudo() {
         {e.pendencias.length>0 && <p className="text-amber-800">Pendências: {e.pendencias.join(', ')}</p>}
         {e.comprovante && <p className="text-green-800">Comprovante: recebido por {e.comprovante.recebidoPor} às {format(new Date(e.comprovante.horario),'HH:mm')}</p>}
         {e.comprovante?.fotoUrl && <a href={e.comprovante.fotoUrl} target="_blank" rel="noreferrer"><img src={e.comprovante.fotoUrl} alt="Foto do comprovante" className="rounded-xl max-h-40 mt-1" onError={ev => { ev.currentTarget.style.display = 'none' }}/></a>}
-        {velho && <div className="bg-amber-100 rounded-xl p-3 mt-2"><p className="font-bold">Status desatualizado</p>
+        {velho && <div className="bg-amber-100 rounded-xl p-3 mt-2"><p className="font-semibold">Status desatualizado</p>
           <button className="btn-out mt-2" onClick={() => { navigator.clipboard?.writeText(msg); toast.success('Texto copiado para o WhatsApp') }}>Solicitar atualização à parceira</button></div>}
       </div>
       {!cliente && <div className="flex gap-2 mt-4">{(e.status==='incompleta' ? ['hist','dados'] as const : ['hist','upd'] as const).map(a => <button key={a} onClick={() => setAba(a)} className={`rounded-full px-4 min-h-[44px] ${aba===a ? 'bg-navy text-creme' : 'border border-navy'}`}>{a==='hist' ? 'Histórico' : a==='dados' ? 'Completar dados' : 'Atualizar'}</button>)}</div>}

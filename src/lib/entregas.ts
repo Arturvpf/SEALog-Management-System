@@ -17,7 +17,7 @@ export const maskTel = (v: string) => { const d = v.replace(/\D/g, '').slice(0, 
 export const contarPendencias = (v: PedidoForm) => { const r = pedidoSchema.safeParse(v); return r.success ? 0 : new Set(r.error.issues.map(i => i.path.join('.'))).size }
 const LABELS = { nome:'nome do destinatário', telefone:'telefone do destinatário', logradouro:'logradouro', numero:'número do endereço', referencia:'ponto de referência', bairro:'bairro', cidade:'cidade', dataDesejada:'data desejada' } as const
 export const pendenciasDe = (d: EntregaForm): string[] => {
-  const p = (Object.keys(LABELS) as (keyof typeof LABELS)[]).filter(k => !d[k]?.trim()).map(k => LABELS[k])
+  const p: string[] = (Object.keys(LABELS) as (keyof typeof LABELS)[]).filter(k => !d[k]?.trim()).map(k => LABELS[k])
   if (d.telefone.trim() && !entregaSchema.shape.telefone.safeParse(d.telefone).success) p.push('telefone válido')
   return p }
 export function montarEntrega(a: { id: string; pedidoId: string; clienteId: string; dados: EntregaForm; canal: Canal; informadoPor: string; registradoPor: string }): Entrega {
